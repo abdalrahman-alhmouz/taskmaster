@@ -15,16 +15,16 @@ public class AddTask extends AppCompatActivity {
         setContentView(R.layout.activity_add_task);
     }
 
-    public void taskAdded(){
-        Toast toast = Toast.makeText(getApplicationContext(), "The text you want to display", Toast.LENGTH_LONG);
-        Button bt = (Button) findViewById(R.id.button);
-        bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toast.show();
-            }
-        });
-    }
+//    public void taskAdded(View view){
+//        Toast toast = Toast.makeText(getApplicationContext(), "The text you want to display", Toast.LENGTH_LONG);
+//        Button bt = (Button) findViewById(R.id.button);
+//        bt.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                toast.show();
+//            }
+//        });
+//    }
 
 
 
