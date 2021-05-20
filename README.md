@@ -7,9 +7,8 @@ Layering Layers On Home Page (Text and Buttons)
  * create AllTask class and AllTask activites then Layering Layers On AllTask Page (Text) 
  Associate the (All  task) button with the Alltask page .
 
- ![homePage]()
- ![AddTask]()
- ![AllTask]()
+ ![homePage](https://raw.githubusercontent.com/abdalrahman-alhmouz/taskmaster/lab26/img/AddTask.PNG)
+ ![AddTask](https://raw.githubusercontent.com/abdalrahman-alhmouz/taskmaster/lab26/img/Capture.PNG)
 
 
 
