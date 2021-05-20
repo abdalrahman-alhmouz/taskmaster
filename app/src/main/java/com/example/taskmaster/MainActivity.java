@@ -18,4 +18,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    public void allTask(View view){
+        Intent intent =new Intent(this,AllTasks.class);
+        startActivity(intent);
+
+    }
 }
