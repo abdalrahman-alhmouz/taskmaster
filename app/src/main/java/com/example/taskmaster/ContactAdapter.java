@@ -54,10 +54,10 @@ public class ContactAdapter extends
     @Override
     public void onBindViewHolder(@NonNull ContactAdapter.ViewHolder holder, int position) {
 
-        Task task = mTask.get(position);
-        holder.title.setText(mTask.get(position).getTitle());
-        holder.body.setText(mTask.get(position).getBody());
-        holder.state.setText(mTask.get(position).getState());
+//        Task task = mTask.get(position);
+//        holder.title.setText(mTask.get(position).getTitle());
+//        holder.body.setText(mTask.get(position).getBody());
+//        holder.state.setText(mTask.get(position).getState());
 
     }
 
