@@ -1,6 +1,7 @@
 package com.example.taskmaster;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -22,5 +23,10 @@ public interface TaskDao {
             "body LIKE :body LIMIT 1")
     Task findByName(String title,String state, String body);
 
+//    @Delete
+//    void delete(Task task);
+
+//    @Query("DELETE  FROM Task ")
+//    void deleted();
 
 }

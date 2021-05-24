@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 .allowMainThreadQueries()
                 .build();
         TaskDao taskDao = database.taskDao();
+
         List<Task> tasks = taskDao.getAllTasks();
 
 
@@ -48,11 +49,13 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         ContactAdapter adapter = new ContactAdapter(tasks);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+        System.out.println(adapter.toString()+"ssssssssssssssssssssssssssssssss");
 
+        adapter.notifyDataSetChanged();
 
     }
 
