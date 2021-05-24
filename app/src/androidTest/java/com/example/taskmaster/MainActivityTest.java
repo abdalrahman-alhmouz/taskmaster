@@ -1,6 +1,7 @@
 package com.example.taskmaster;
 
 import androidx.test.espresso.action.ViewActions;
+import androidx.test.espresso.assertion.ViewAssertions;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -28,11 +29,22 @@ public class MainActivityTest {
         onView(withId(R.id.SettingPage)).perform(click()).check(matches(isDisplayed()));
     }
 
+    @Test
+    public void testOne() {
+        onView(withId(R.id.textView)).check(matches(withText("My Task")));
+        onView(ViewMatchers.withId(R.id.recyclerview)).perform(ViewActions.swipeDown());
+
+        onView(withId(R.id.recyclerview)).perform(ViewActions.swipeDown()).check(ViewAssertions.matches(isDisplayed()));
+
+    }
+
 //    @Test
-//    public void testOne() {
-//        onView(withId(R.id.textView)).check(matches(withText("My Task")));
-//        onView(ViewMatchers.withId(R.id.)).perform(ViewActions.swipeLeft());
+//    public  void  testTow(){
+////  tap on a task, and assert that the resulting activity displays the name of that task
 //
+//        onView(withId(R.id.recyclerview)).perform(click());
+//
+//        onView(withText("My task 1")).check(matches(isDisplayed()));
 //    }
 
 }

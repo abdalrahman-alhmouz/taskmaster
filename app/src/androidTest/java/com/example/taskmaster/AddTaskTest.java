@@ -22,7 +22,7 @@ public class AddTaskTest {
 
     @Test
     public void testOne() {
-        onView(withId(R.id.textView2)).check(matches(withText("Task Title")));
+        onView(withId(R.id.buttonAddTaskSubmit)).check(matches(withText("Task Title")));
 
     }
 

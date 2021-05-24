@@ -46,6 +46,7 @@ public class AddTask extends AppCompatActivity {
                 toast.show();
                 Task newTask = new Task(taskTitleTV.getText().toString(), taskDescriptionTV.getText().toString(), statusAddTask.getText().toString());
                 database.taskDao().insertAll(newTask);
+
                 Intent goToMainActivity = new Intent(AddTask.this, MainActivity.class);
                 AddTask.this.startActivity(goToMainActivity);
             }

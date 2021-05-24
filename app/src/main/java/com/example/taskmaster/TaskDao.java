@@ -10,7 +10,7 @@ import java.util.List;
 public interface TaskDao {
 
     @Insert
-    void insertAll(Task... task);
+    void insertAll(Task task);
 
     @Query("SELECT * FROM Task")
     public List<Task> getAllTasks();
