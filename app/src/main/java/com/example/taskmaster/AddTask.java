@@ -31,8 +31,7 @@ public class AddTask extends AppCompatActivity implements ContactAdapter.OnInter
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //Thanks David
-        //https://developer.android.com/guide/topics/ui/notifiers/toasts.html
+        
         Context context = getApplicationContext();
         CharSequence text = "Submitted!";
         int duration = Toast.LENGTH_SHORT;
