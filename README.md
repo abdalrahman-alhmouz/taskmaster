@@ -22,6 +22,19 @@ Layering Layers On Home Page (Text and Buttons)
 
 
 
+### Home 
+
+- Built home page
+
+### lap29
+![Home](img/Home.png)
+
+![setting](img/setting.png)
+![addTask](img/AddTask.png)
+
+
+- Modify Add Task form to save the data entered in as a Task in your local database.
+- Home page updated RecyclerView to display all Task entities in database
 
 
 
