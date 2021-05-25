@@ -1,7 +1,6 @@
 package com.example.taskmaster;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
@@ -10,86 +9,86 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity implements ContactAdapter.OnInteractingWithTaskListener {
+
     Database database;
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        TextView textView=findViewById(R.id.myTaskTitle);
+        String user=sharedPref.getString("userName","user");
+        textView.setText(user);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//        List<Task> mTask = new ArrayList<>();
-//        Task task1 = new Task("hello","abd","alrahman");
-//        Task task2 = new Task("hello","ahmad","kefak");
-//        Task task3 = new Task("hello","ali","mohd");
-//
-//
-//        mTask.add(task1);
-//        mTask.add(task2);
-//        mTask.add(task3);
-
 
         database = Room.databaseBuilder(getApplicationContext(), Database.class, "tasks")
                 .allowMainThreadQueries()
                 .build();
-        TaskDao taskDao = database.taskDao();
-
-        List<Task> tasks = taskDao.getAllTasks();
 
 
+        ArrayList<Task> tasks = (ArrayList<Task>) database.taskDao().getAllTasks();
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-        ContactAdapter adapter = new ContactAdapter(tasks);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        RecyclerView recyclerView = findViewById(R.id.taskRecycler);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new ContactAdapter(tasks, this));
 
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(adapter);
-        System.out.println(adapter.toString()+"ssssssssssssssssssssssssssssssss");
+        Button addTaskButton = MainActivity.this.findViewById(R.id.addTaskButton);
+        addTaskButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, AddTask.class);
+                startActivity(i);
+            }
+        });
 
-        adapter.notifyDataSetChanged();
+        Button addSettingsButton = MainActivity.this.findViewById(R.id.settingsButtonHome);
+        addSettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, SettingPage.class);
+                startActivity(i);
+            }
+        });
 
-    }
+        Button allTasksButton = MainActivity.this.findViewById(R.id.allTasksButton);
+        allTasksButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, AllTasks.class);
+                startActivity(i);
+            }
+        });
 
-    public void addTask(View view){
-        Intent intent =new Intent(this,AddTask.class);
-        startActivity(intent);
 
-    }
-
-    public void allTasks(View view){
-        Intent intent =new Intent(this,AllTasks.class);
-        startActivity(intent);
-
-    }
-    public void settingPage(View view){
-        Intent intent =new Intent(this,SettingPage.class);
-        startActivity(intent);
-
-    }
-
-    //    public void title(View view){
-//        Intent intent =new Intent(this,TaskDetail.class);
-//        startActivity(intent);
-//
-//    }
-    public void tasks(View view){
-        Button buttonMain=(Button)view;
-        String title=buttonMain.getText().toString();
-        Intent intent =new Intent(this,TaskDetail.class);
-        intent.putExtra("title",title);
-        startActivity(intent);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        final SharedPreferences.Editor preferenceEditor = preferences.edit();
 
     }
 
 
+    @Override
+    public void taskListener(Task task) {
+        Intent intent = new Intent(MainActivity.this, TaskDetail.class);
+        intent.putExtra("title", task.title);
+        intent.putExtra("body", task.body);
+        intent.putExtra("state", task.state);
+        this.startActivity(intent);
 
+    }
 }

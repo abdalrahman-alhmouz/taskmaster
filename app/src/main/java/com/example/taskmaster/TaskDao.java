@@ -1,7 +1,7 @@
 package com.example.taskmaster;
 
+
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -11,7 +11,7 @@ import java.util.List;
 public interface TaskDao {
 
     @Insert
-    void insertAll(Task task);
+    public void saveTask(Task task);
 
     @Query("SELECT * FROM Task")
     public List<Task> getAllTasks();
@@ -19,14 +19,6 @@ public interface TaskDao {
     @Query("SELECT * FROM Task ORDER BY id DESC")
     public List<Task> getAllTasksReversed();
 
-    @Query("SELECT * FROM Task WHERE title LIKE :title AND " +"state LIKE :state AND " +
-            "body LIKE :body LIMIT 1")
-    Task findByName(String title,String state, String body);
 
-//    @Delete
-//    void delete(Task task);
-
-//    @Query("DELETE  FROM Task ")
-//    void deleted();
 
 }
