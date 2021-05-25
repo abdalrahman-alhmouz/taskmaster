@@ -27,10 +27,10 @@ Layering Layers On Home Page (Text and Buttons)
 - Built home page
 
 ### lap29
-![Home](img/Home.png)
+![Home](https://raw.githubusercontent.com/abdalrahman-alhmouz/taskmaster/lab29/img/Home.PNG)
 
-![setting](img/setting.png)
-![addTask](img/AddTask.png)
+![setting](https://raw.githubusercontent.com/abdalrahman-alhmouz/taskmaster/lab29/img/setting.PNG)
+![addTask](https://raw.githubusercontent.com/abdalrahman-alhmouz/taskmaster/lab29/img/AddTask.PNG)
 
 
 - Modify Add Task form to save the data entered in as a Task in your local database.
