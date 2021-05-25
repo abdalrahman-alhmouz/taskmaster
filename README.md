@@ -2,10 +2,10 @@
 
 Layering Layers On Home Page (Text and Buttons)
  * create AddTask class and AddTask activites then Layering Layers On AddTask Page (Text and Buttons) 
- Associate the (Add task) button with the Add task page .
+ Associate the (Add taskTable) button with the Add taskTable page .
 
  * create AllTask class and AllTask activites then Layering Layers On AllTask Page (Text) 
- Associate the (All  task) button with the Alltask page .
+ Associate the (All  taskTable) button with the Alltask page .
  
  * create DetailTask class and DetailTask activites then Layering Layers On main Page (Text) 
  Associate the Three button with the DetailTask page .

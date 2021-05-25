@@ -16,7 +16,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 @RunWith(AndroidJUnit4.class)
 @LargeTest
-public class AddTaskTest {
+public class AddTaskTableTest {
     @Rule
     public ActivityScenarioRule<AddTask> activityRule =new ActivityScenarioRule<>(AddTask.class);
 

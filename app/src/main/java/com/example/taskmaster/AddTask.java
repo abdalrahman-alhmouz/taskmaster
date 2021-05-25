@@ -46,8 +46,8 @@ public class AddTask extends AppCompatActivity implements ContactAdapter.OnInter
             @Override
             public void onClick(View view) {
                 toast.show();
-            Task newTask = new Task(taskTitleTV.getText().toString(), taskDescriptionTV.getText().toString(), statusAddTask.getText().toString());
-            database.taskDao().saveTask(newTask);
+            TaskTable newTaskTable = new TaskTable(taskTitleTV.getText().toString(), taskDescriptionTV.getText().toString(), statusAddTask.getText().toString());
+            database.taskDao().saveTask(newTaskTable);
             Intent goToMainActivity = new Intent(AddTask.this, MainActivity.class);
             AddTask.this.startActivity(goToMainActivity);
             }
@@ -63,7 +63,7 @@ public class AddTask extends AppCompatActivity implements ContactAdapter.OnInter
     }
 
     @Override
-    public void taskListener(Task task) {
+    public void taskListener(TaskTable taskTable) {
 
     }
 }
