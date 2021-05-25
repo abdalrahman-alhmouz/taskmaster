@@ -1,8 +1,5 @@
 package com.example.taskmaster;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,13 +9,17 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class AddTask extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+
+public class AddTask extends AppCompatActivity implements ContactAdapter.OnInteractingWithTaskListener{
+
     Database database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_task);
+        setContentView(R.layout.activity_addtask);
 
         database = Room.databaseBuilder(getApplicationContext(), Database.class, "tasks")
                 .allowMainThreadQueries()
@@ -30,7 +31,8 @@ public class AddTask extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
+        //Thanks David
+        //https://developer.android.com/guide/topics/ui/notifiers/toasts.html
         Context context = getApplicationContext();
         CharSequence text = "Submitted!";
         int duration = Toast.LENGTH_SHORT;
@@ -41,13 +43,14 @@ public class AddTask extends AppCompatActivity {
         addTaskButton.setOnClickListener(new View.OnClickListener() {
 
 
+
             @Override
             public void onClick(View view) {
                 toast.show();
-                Task newTask = new Task(taskTitleTV.getText().toString(), taskDescriptionTV.getText().toString(), statusAddTask.getText().toString());
-                database.taskDao().insertAll(newTask);
-                Intent goToMainActivity = new Intent(AddTask.this, MainActivity.class);
-                AddTask.this.startActivity(goToMainActivity);
+            Task newTask = new Task(taskTitleTV.getText().toString(), taskDescriptionTV.getText().toString(), statusAddTask.getText().toString());
+            database.taskDao().saveTask(newTask);
+            Intent goToMainActivity = new Intent(AddTask.this, MainActivity.class);
+            AddTask.this.startActivity(goToMainActivity);
             }
         });
 
@@ -60,19 +63,8 @@ public class AddTask extends AppCompatActivity {
 
     }
 
+    @Override
+    public void taskListener(Task task) {
 
-
-//    public void taskAdded(View view){
-//        Toast toast = Toast.makeText(getApplicationContext(), "The text you want to display", Toast.LENGTH_LONG);
-//        Button bt = (Button) findViewById(R.id.button);
-//        bt.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                toast.show();
-//            }
-//        });
-//    }
-
-
-
+    }
 }

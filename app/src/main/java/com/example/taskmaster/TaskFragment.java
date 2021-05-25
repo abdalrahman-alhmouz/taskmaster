@@ -21,10 +21,11 @@ public class TaskFragment extends Fragment {
     private static final String ARG_PARAM2 = "body";
     private static final String ARG_PARAM3 = "state";
 
+
     // TODO: Rename and change types of parameters
-    private String title;
-    private String body;
-    private String state;
+    private String mTitle;
+    private String mBody;
+    private String mState;
 
     public TaskFragment() {
         // Required empty public constructor
@@ -34,18 +35,18 @@ public class TaskFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param title Parameter 1.
-     * @param body Parameter 2.
-     * @param state Parameter 3.
+     * @param title Title.
+     * @param body Body.
+     * @param state State.
      * @return A new instance of fragment TaskFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static TaskFragment newInstance(String title, String body,String state) {
+    public static TaskFragment newInstance(String title, String body, String state) {
         TaskFragment fragment = new TaskFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, title);
         args.putString(ARG_PARAM2, body);
-        args.putString(ARG_PARAM2, state);
+        args.putString(ARG_PARAM3, state);
         fragment.setArguments(args);
         return fragment;
     }
@@ -54,9 +55,9 @@ public class TaskFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            title = getArguments().getString(ARG_PARAM1);
-            body = getArguments().getString(ARG_PARAM2);
-            state = getArguments().getString(ARG_PARAM2);
+            mTitle = getArguments().getString(ARG_PARAM1);
+            mBody = getArguments().getString(ARG_PARAM2);
+            mState = getArguments().getString(ARG_PARAM3);
         }
     }
 

@@ -1,6 +1,5 @@
 package com.example.taskmaster;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,60 +8,73 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class ContactAdapter extends
-        RecyclerView.Adapter<ContactAdapter.ViewHolder>{
-    private List<Task> mTask;
-    public ContactAdapter(List<Task> tasks) {
-        mTask = tasks;
+public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.TaskViewHolder> {
+
+    public ArrayList<Task> task;
+    public OnInteractingWithTaskListener listener;
+
+    public ContactAdapter(ArrayList<Task> task, OnInteractingWithTaskListener listener) {
+        this.task = task;
+        this.listener = listener;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class TaskViewHolder extends RecyclerView.ViewHolder {
+        public Task task;
+        public View itemView;
 
-        public TextView title;
-        public TextView body;
-        public TextView state;
-
-        public ViewHolder(View itemView) {
-            // Stores the itemView in a public final member variable that can be used
-            // to access the context from any ViewHolder instance.
+        public TaskViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            title = (TextView) itemView.findViewById(R.id.titleHome);
-            body = (TextView) itemView.findViewById(R.id.bodyHome);
-            state = (TextView) itemView.findViewById(R.id.stateHome);
-
+            this.itemView = itemView;
         }
-
     }
 
-        @NonNull
+
+    @NonNull
     @Override
-    public ContactAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            Context context = parent.getContext();
-            LayoutInflater inflater = LayoutInflater.from(context);
+    public ContactAdapter.TaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.fragment_task, parent, false);
 
-            // Inflate the custom layout
-            View contactView = inflater.inflate(R.layout.fragment_task, parent, false);
+            final TaskViewHolder viewHolder = new TaskViewHolder(view);
 
-            // Return a new holder instance
-            ViewHolder viewHolder = new ViewHolder(contactView);
-            return viewHolder;
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    System.out.println(" this is the task title on click " + viewHolder.task.title);
+                    listener.taskListener(viewHolder.task);
+                }
+            });
+
+        return viewHolder;
+    }
+
+    public static interface OnInteractingWithTaskListener{
+        public void taskListener(Task task);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ContactAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ContactAdapter.TaskViewHolder holder, int position) {
+        holder.task = task.get(position);
 
-//        Task task = mTask.get(position);
-//        holder.title.setText(mTask.get(position).getTitle());
-//        holder.body.setText(mTask.get(position).getBody());
-//        holder.state.setText(mTask.get(position).getState());
+        TextView titleTextView = holder.itemView.findViewById(R.id.titleView);
+        TextView bodyTextView = holder.itemView.findViewById(R.id.bodyView);
+        TextView stateTextView = holder.itemView.findViewById(R.id.stateView);
+        titleTextView.setText(holder.task.title);
+        bodyTextView.setText(holder.task.body);
+        stateTextView.setText(holder.task.state);
+
 
     }
 
     @Override
     public int getItemCount() {
-        return mTask.size();
+        return task.size();
     }
+
+
+
+
 }
