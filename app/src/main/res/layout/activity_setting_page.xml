@@ -13,7 +13,7 @@
         android:layout_marginTop="168dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="set a Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,8 +24,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="380dp"
+        android:onClick="toast.show()"
         android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/saveUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="212dp"
+        tools:layout_editor_absoluteY="509dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
