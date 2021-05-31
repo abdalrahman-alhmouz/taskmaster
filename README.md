@@ -13,11 +13,7 @@ Layering Layers On Home Page (Text and Buttons)
  * create Three button with different name , each button will display different title . 
 
  * create SettingPage class and SettingPage activites then Layering Layers On SettingPage Page (Text and Button) 
-<<<<<<< HEAD
- Associate the (saveName) button with the main page with userName..
-=======
  Associate the (saveName) button with the main page with userName ..
->>>>>>> ecaf431c6ba17b1aa250f1c7de16a1cf6bf93e3b
 
  ![homePage](https://raw.githubusercontent.com/abdalrahman-alhmouz/taskmaster/lab27/img/homePage.PNG)
  ![task1](https://raw.githubusercontent.com/abdalrahman-alhmouz/taskmaster/lab27/img/task1.PNG)
