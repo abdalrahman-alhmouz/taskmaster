@@ -31,7 +31,7 @@ public class AddTask extends AppCompatActivity implements ContactAdapter.OnInter
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
+        
         Context context = getApplicationContext();
         CharSequence text = "Submitted!";
         int duration = Toast.LENGTH_SHORT;
@@ -67,3 +67,4 @@ public class AddTask extends AppCompatActivity implements ContactAdapter.OnInter
 
     }
 }
+
