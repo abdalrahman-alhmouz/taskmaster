@@ -13,7 +13,7 @@ Layering Layers On Home Page (Text and Buttons)
  * create Three button with different name , each button will display different title . 
 
  * create SettingPage class and SettingPage activites then Layering Layers On SettingPage Page (Text and Button) 
- Associate the (saveName) button with the main page with userName .
+ Associate the (saveName) button with the main page with userName ..
 
  ![homePage](https://raw.githubusercontent.com/abdalrahman-alhmouz/taskmaster/lab27/img/homePage.PNG)
  ![task1](https://raw.githubusercontent.com/abdalrahman-alhmouz/taskmaster/lab27/img/task1.PNG)
@@ -27,10 +27,10 @@ Layering Layers On Home Page (Text and Buttons)
 - Built home page
 
 ### lap29
-![Home](img/Home.png)
+![Home](https://raw.githubusercontent.com/abdalrahman-alhmouz/taskmaster/lab29/img/Home.PNG)
 
-![setting](img/setting.png)
-![addTask](img/AddTask.png)
+![setting](https://raw.githubusercontent.com/abdalrahman-alhmouz/taskmaster/lab29/img/setting.PNG)
+![addTask](https://raw.githubusercontent.com/abdalrahman-alhmouz/taskmaster/lab29/img/AddTask.PNG)
 
 
 - Modify Add Task form to save the data entered in as a Task in your local database.
