@@ -16,9 +16,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 
-public class MainActivity extends AppCompatActivity implements ContactAdapter.OnInteractingWithTaskListener {
+public class MainActivity extends AppCompatActivity implements ViewAdapter.OnInteractingWithTaskListener {
 
-    Database database;
+    Database db;
 
 
     @Override
@@ -37,16 +37,16 @@ public class MainActivity extends AppCompatActivity implements ContactAdapter.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        database = Room.databaseBuilder(getApplicationContext(), Database.class, "tasks")
+        db = Room.databaseBuilder(getApplicationContext(), Database.class, "tasks")
                 .allowMainThreadQueries()
                 .build();
 
 
-        ArrayList<Task> tasks = (ArrayList<Task>) database.taskDao().getAllTasks();
+        ArrayList<Task> tasks = (ArrayList<Task>) db.taskDao().loadAll();
 
         RecyclerView recyclerView = findViewById(R.id.taskRecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new ContactAdapter(tasks, this));
+        recyclerView.setAdapter(new ViewAdapter(tasks, this));
 
         Button addTaskButton = MainActivity.this.findViewById(R.id.addTaskButton);
         addTaskButton.setOnClickListener(new View.OnClickListener() {
@@ -57,8 +57,8 @@ public class MainActivity extends AppCompatActivity implements ContactAdapter.On
             }
         });
 
-        Button addSettingsButton = MainActivity.this.findViewById(R.id.settingsButtonHome);
-        addSettingsButton.setOnClickListener(new View.OnClickListener() {
+        Button setting = MainActivity.this.findViewById(R.id.settingsButtonHome);
+        setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, SettingPage.class);
