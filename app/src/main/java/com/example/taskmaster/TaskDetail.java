@@ -3,11 +3,8 @@ package com.example.taskmaster;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 
 public class TaskDetail extends AppCompatActivity {
@@ -20,9 +17,9 @@ public class TaskDetail extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
-        TextView titleTask = TaskDetail.this.findViewById(R.id.taskName);
-        TextView bodyTask = TaskDetail.this.findViewById(R.id.loremIpsumTaskDetails);
-        TextView stateTask = TaskDetail.this.findViewById(R.id.descriptionTaskDetails);
+        TextView titleTask = TaskDetail.this.findViewById(R.id.title);
+        TextView bodyTask = TaskDetail.this.findViewById(R.id.status);
+        TextView stateTask = TaskDetail.this.findViewById(R.id.body);
 
         titleTask.setText(intent.getExtras().getString("title"));
         bodyTask.setText(intent.getExtras().getString("body"));
