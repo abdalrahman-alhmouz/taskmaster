@@ -1,5 +1,7 @@
 package com.example.taskmaster;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -12,9 +14,9 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
-import org.hamcrest.TypeSafeMatcher;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -67,11 +69,16 @@ public class MainActivityTest {
 
         onView(withId(R.id.settingsButtonHome)).perform(click());
         onView(withId(R.id.editTextTextPersonName3)).perform(typeText("abd"));
+        onView(withId(R.id.button5)).perform(click());
+        onView(withId(R.id.myTaskTitle)).check(matches(withText("abd")));
 
-//        onView(withId(R.id.userName)).perform(typeText("sabbagh"));
-//        onView(withId(R.id.saveUserName)).perform(click());
-//        onView(withId(R.id.user)).check(matches(withText("sabbagh")));
-// edit the user’s username, and assert that it says the correct thing on the homepage
+    }
+    @Test
+    public void testForChangeUserName() {
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String result= preferences.getString("userName","user");
+        onView(withText(result.trim())).check(matches(isDisplayed()));
     }
 
 
