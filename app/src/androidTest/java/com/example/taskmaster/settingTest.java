@@ -3,6 +3,7 @@ package com.example.taskmaster;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.widget.TextView;
 
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.action.ViewActions;
@@ -28,6 +29,8 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
@@ -55,6 +58,17 @@ public class settingTest {
         onView(withId(R.id.settingsButtonHome)).perform(click());
         onView(withId(R.id.editTextTextPersonName3)).perform(typeText("set a Name"));
 
+
+    }
+    @Test
+    public void testForChangeUserName(){
+        onView(withId(R.id.editTextTextPersonName3)).perform(typeText("abd"));
+//        onView(withId(R.id.myTaskTitle)).check(matches(isDisplayed()));
+//        onView(withText("set a Name")).check(matches(isDisplayed()));
+
+
+//        onView(withId(R.id.settingsButtonHome)).perform(click());
+//        onView(withId(R.id.editTextTextPersonName3)).perform(typeText("abd"));
 
     }
 
